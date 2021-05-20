@@ -9,7 +9,7 @@
 
 
 ### You win 
-once you are able to increase your asset within a set time.
+once you increased your asset within a set time.
 ### You loose
 once you decreased your asset within a set time.
 
