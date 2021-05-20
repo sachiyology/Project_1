@@ -2,7 +2,7 @@
 ## Project_1
 
 ### How to Play:
-* The player has 100 in a pocket as default.
+* The player has 100 coins in a pocket as default.
 * Buy apples from the seller.
 * The price of apple changes randomly / every 5 sec(?).
 * You have 3 min to sell and buy.
@@ -10,7 +10,7 @@
 
 
 ### You win 
-once you increased your asset within 3 min.
+once the player increased the amount of coins in the pocket within 3 min.
 ### You loose
-once you decreased your asset within 3 min.
+once you decreased the amount of coins in the pocket within 3 min.
 
