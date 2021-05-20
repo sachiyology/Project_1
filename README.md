@@ -2,11 +2,14 @@
 ## Project_1
 
 ### How to Play:
-* Buy turnips from the seller.
-* The price changes randomly / every 30 sec(?).
+* The player has 100USD as default.
+* Buy apples from the seller.
+* The price of apple changes randomly / every 5 sec(?).
+* You have 3 min to sell.
+
 
 ### You win 
-once you are able to sell them at a higher price than you paid for them within a set time.
+once you are able to increase your asset within a set time.
 ### You loose
-once you choose to sell them at a lower price than you paid for them within a set time.
+once you decreased your asset within a set time.
 
