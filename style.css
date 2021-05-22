@@ -1,0 +1,33 @@
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  height: 100%;
+  width: 100%;
+  background: url(/Users/ssugaya/Desktop/seir-flex-hypatia/homework/Project_1/images/background-image_2.png) no-repeat;
+  background-position:center;                     /* 画像の表示位置を指定 */
+  background-size: contain;
+}
+.start {
+  z-index: 4;
+  background-color: rgb(64, 151, 50);
+  padding: 10px 40px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-family: 'TsukuARdGothic-Regular';
+  color: white;
+  text-align: center;
+  outline: 2px solid gold;
+  outline-offset: -4px;
+}
+.title-main {
+  position: fixed;
+  top: 15%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
