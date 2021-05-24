@@ -1,4 +1,39 @@
-.background-image {
+body {
+    font-family: "Verdana", sans-serif;
+    background-size: cover;
+}
+.flex-container {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+h2 {
+  color: gold;
+}
+.modal {
+    visibility: hidden;
+    width:50vw;
+    max-width: 400px;
+    padding: 30px;
+    position: fixed;
+    top: 45%;
+    transform: translateY(-50%);
+    left:0;
+    right: 0;
+    margin: 0 auto;
+    background-color: rgb(64, 151, 50);
+    border-radius: 4px;
+    box-shadow: 4px 1px 10px 0px #dadada;
+    text-align: center;
+    transition: opacity 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    outline: 2px solid gold;
+}
+.modal.open {
+    visibility: visible;
+    opacity: 1;
+}
+.background-image{
   position: fixed;
   top: 0;
   left: 0;
@@ -9,25 +44,39 @@
   background-position:center;                     /* 画像の表示位置を指定 */
   background-size: contain;
 }
-.start {
-  z-index: 4;
-  background-color: rgb(64, 151, 50);
-  padding: 10px 40px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+button, .btn {
   text-transform: uppercase;
-  font-family: 'TsukuARdGothic-Regular';
-  color: white;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 1.5rem;
+  color: #424242;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: .8px;
   text-align: center;
-  outline: 2px solid gold;
-  outline-offset: -4px;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 2px;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.225);
 }
-.title-main {
-  position: fixed;
-  top: 15%;
-  left: 0;
-  right: 0;
-  text-align: center;
+
+button {
+  background-color: rgb(241 238 246);
+}
+
+.btn {
+  background-color: rgb(251 248 236);
 }

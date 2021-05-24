@@ -1,13 +1,10 @@
-class apple {
-  constructor(numApple, coins, rate) {
-    this.numApple = numApple;
-    this.coins = coins;
-    this.rate = rate;
-  }
-}
+class Player {
+    constructor() {
+        this.coins = 100;
+        this.apple = 0;
+        this.limit = 0;  // 期限
+    }
 
-function randomizer(min, max) {
-  return (Math.floor(Math.random() * (max - min + 1) + min));
-}
+var value = Math.floor( Math.random() * (max + 1 - min) ) + min;
 
-const apple = []
+const player = new Player();
