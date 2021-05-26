@@ -60,6 +60,11 @@ class Player {
   this.timer = setInterval(() => {
     this.limit--;
     this.updateStatsOnDom();
+
+    if (1 <= this.limit && this.limit < 6) {
+      kumaImage();
+      kumaOn.play();
+    }
     /*kumaの襲来*/
 
     if (this.limit < 0) {
@@ -179,3 +184,8 @@ getStarted.addEventListener('click', startGame);  //ボタンに関数割り当�
 function kumaImage() {
   document.querySelector('.img').innerHTML = `<img src="./images/bear_4.png">`;
 }
+
+// クマ襲来音
+const kumaOn = new Audio('bull_monster.mp3');
+// kumaOn.play();  // 再生
+// kumaOn.pause();  // 一時停止
