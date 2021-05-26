@@ -61,6 +61,7 @@ class Player {
     this.limit--;
     this.updateStatsOnDom();
     /*kumaの襲来*/
+
     if (this.limit < 0) {
       this.stopTimer();
       this.limit = 0;
@@ -176,5 +177,5 @@ getStarted.addEventListener('click', startGame);  //ボタンに関数割り当�
 
 // クマ画像表示
 function kumaImage() {
-  document.querySelector('.img').innerHTML = `<img src="./images/bear_4.jpeg">`;
+  document.querySelector('.img').innerHTML = `<img src="./images/bear_4.png">`;
 }
