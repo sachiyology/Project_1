@@ -17,7 +17,7 @@ class Player {
   }
 
   buy() {
-    //所持金がカブ価より多く、時間が残っている場合のみ
+    //所持金がapple価より多く、時間が残っている場合のみ
     if (this.coins >= value && market.getTime() > 0) {
       this.coins -= value;
       this.apple += 1;
@@ -30,11 +30,11 @@ class Player {
   }
 
   sell() {
-    //カブを所持しており、時間が残っている場合のみ
+    //appleを所持しており、時間が残っている場合のみ
     if (this.apple > 0 && market.getTime() > 0) {
       this.coins += value;
       this.apple -= 1;
-      /*カブを所持していない場合カウントは0*/
+      //appleを所持していない場合カウントは0
       if (this.apple <= 0) {
         this.limit = 0;
       }
@@ -46,36 +46,35 @@ class Player {
   updateStatsOnDom() {
     document.querySelector('.player-stats').innerHTML = `
         <div class="coins btn">
-            coins: <span>${this.coins}</span>
+            &#x1fa99;: <span>${this.coins}</span>
         </div>
         <div class="apple btn">
-            apple: <span>${this.apple}</span>
+            &#x1f34e;: <span>${this.apple}</span>
         </div>
         <div class="limit btn">
-            Bear attacks: <span>${this.limit}</span>
+            &#x1f43b;: <span>${this.limit}</span>
         </div>
         `;
   }
 
   startCounters() {
-  this.timer = setInterval(() => {
-    this.limit--;
-    this.updateStatsOnDom();
-    if (1 <= this.limit && this.limit < 6) {
-      kumaImage();
-      kumaOn.play();
-    }
-    /*kumaの襲来*/
-
-    if (this.limit < 0) {
-      this.stopTimer();
-      this.limit = 0;
-      this.apple = 0;
+    this.timer = setInterval(() => {
+      this.limit--;
       this.updateStatsOnDom();
-      removeImage();
-    }
-  }, 1000);
-}
+      if (1 <= this.limit && this.limit < 6) {
+        kumaImage();
+        kumaOn.play();
+      }
+      /*kumaの襲来*/
+      if (this.limit < 0) {
+        this.stopTimer();
+        this.limit = 0;
+        this.apple = 0;
+        this.updateStatsOnDom();
+        removeImage();
+      }
+    }, 1000);
+  }
 
 
   stopTimer() {
@@ -91,8 +90,10 @@ class Player {
 }
 
 class Market {
-  constructor() {
+  constructor(pi) {
     this.time = gameTime;  // 残り時間
+    this.playeritem = pi;
+    this.playeritem.coins = 100;
   }
 
   getTime() {
@@ -106,7 +107,11 @@ class Market {
       this.time--;
       if (this.time < 0) {
         this.stopTimer();
-        alert('Game Over');
+        if(player.coins >= 101){
+          alert('You Won!');
+        }else {
+          alert('You lost!');
+        }
       }
     }, 1000);
   }
@@ -115,10 +120,11 @@ class Market {
     clearInterval(this.timer);　// タイマーの停止
   }
 
-  //
+  // 再描画
   updateStatsOnDom() {
     document.querySelector('.controls .game-time').innerHTML = `
-            Remaining: <span>${this.time}</span>
+            &#x23f3;
+: <span>${this.time}</span>
         `;
 
     // random price
@@ -127,7 +133,6 @@ class Market {
       document.querySelector('.market .value').innerHTML = `
               Current Price: <span>${value}</span>
           `;
-
     }
   }
 
@@ -138,11 +143,13 @@ class Market {
 }
 
 const player = new Player();
-const market = new Market();
+// const market = new Market();  //元の行
+const market = new Market(player);
 const buyApple = () => player.buy();  //ボタン処理
 const sellApple = () => player.sell(); //ボタン処理
 
-/*リセットボタン押下時*/
+
+//reset game
 const resetGame = () => {
   modal.classList.toggle('open');
   market.reset();
@@ -164,11 +171,13 @@ const startGame = () => {
                     <div class="value btn">Current Price: <span>5</span></div>
                 </div>
                 <div class="player-stats">
-                    <div class="coins btn">Coins: <span>100</span>
+                    <div class="coins btn">&#x1fa99;
+: <span>100</span>
                     </div>
-                    <div class="apple btn">Apple: <span>0</span>
+                    <div class="apple btn">&#x1f34e;: <span>0</span>
                     </div>
-                    <div class="limit btn">Bear Attacks: <span>0</span>
+                    <div class="limit btn">&#x1f43b;
+: <span>0</span>
                     </div>
                 </div>`;
 
@@ -194,5 +203,3 @@ function removeImage() {
 }
 // クマ襲来音
 const kumaOn = new Audio('./images/bull_monster.mp3');
-// kumaOn.play();  // 再生
-// kumaOn.pause();  // 一時停止
