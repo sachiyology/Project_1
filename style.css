@@ -75,9 +75,7 @@ button {
   background-color: rgb(251 248 236);
 }
 .img {
-  position: fixed;
-  top: 0;
-  left: 0;
-  text-align: center;
-  opacity: 0;
+    text-align: center;
+    width: 100%;
+    position: absolute;
 }

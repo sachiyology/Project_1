@@ -4,8 +4,8 @@ const flexContainer = document.querySelector('.flex-container');
 
 const min = 1;
 const max = 10;
-const interval = 5;
-const gameTime = 180;
+const interval = 1;
+const gameTime = 90;
 
 var value = Math.floor(Math.random() * (max + 1 - min)) + min;
 
@@ -25,6 +25,7 @@ class Player {
       this.updateStatsOnDom();
       this.stopTimer();
       this.startCounters();
+      ringoImage();
     }
   }
 
@@ -60,7 +61,6 @@ class Player {
   this.timer = setInterval(() => {
     this.limit--;
     this.updateStatsOnDom();
-
     if (1 <= this.limit && this.limit < 6) {
       kumaImage();
       kumaOn.play();
@@ -72,6 +72,7 @@ class Player {
       this.limit = 0;
       this.apple = 0;
       this.updateStatsOnDom();
+      removeImage();
     }
   }, 1000);
 }
@@ -85,7 +86,7 @@ class Player {
     this.stopTimer();
     this.coins = 100;
     this.apple = 0;
-    this.limit = 60;
+    this.limit = 15;
   }
 }
 
@@ -182,10 +183,16 @@ getStarted.addEventListener('click', startGame);  //ボタンに関数割り当�
 
 // クマ画像表示
 function kumaImage() {
-  document.querySelector('.img').innerHTML = `<img src="./images/bear_4.png">`;
+  document.querySelector('.img').innerHTML = `<img src="./images/animal_kowai_kuma.png">`;
 }
-
+// クマ画像表示
+function ringoImage() {
+  document.querySelector('.img').innerHTML = `<img src="./images/kari_ringo.png">`;
+}
+function removeImage() {
+  document.querySelector('.img').innerHTML = `<img src = ""> `;
+}
 // クマ襲来音
-const kumaOn = new Audio('bull_monster.mp3');
+const kumaOn = new Audio('./images/bull_monster.mp3');
 // kumaOn.play();  // 再生
 // kumaOn.pause();  // 一時停止
