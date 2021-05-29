@@ -5,9 +5,9 @@ const flexContainer = document.querySelector('.flex-container');
 const min = 1;
 const max = 10;
 const interval = 1;
-const gameTime = 90;
+const gameTime = 60;
 
-var value = Math.floor(Math.random() * (max + 1 - min)) + min;
+var value = Math.floor( Math.random() * (max + 1 - min) ) + min;
 
 class Player {
   constructor() {
@@ -21,7 +21,7 @@ class Player {
     if (this.coins >= value && market.getTime() > 0) {
       this.coins -= value;
       this.apple += 1;
-      this.limit = 60;
+      this.limit = 10;
       this.updateStatsOnDom();
       this.stopTimer();
       this.startCounters();
@@ -101,16 +101,30 @@ class Market {
   }
 
   // カウントダウン
-  startCounters() {
+  // startCounters() {
+  //       this.timer = setInterval(() => {
+  //           this.updateStatsOnDom();
+  //           this.time--;
+  //           if(this.time < 0){
+  //             this.stopTimer();
+  //             alert('ゲームが終了しました');
+  //           }
+  //       }, 1000);
+  //   }
+    startCounters() {
     this.timer = setInterval(() => {
       this.updateStatsOnDom();
       this.time--;
       if (this.time < 0) {
         this.stopTimer();
+        bgmOn.pause();
         if(player.coins >= 101){
+          winnerOn.play();
           alert('You Won!');
         }else {
+          looserOn.play();
           alert('You lost!');
+
         }
       }
     }, 1000);
@@ -128,13 +142,14 @@ class Market {
         `;
 
     // random price
-    if (this.time % interval == 0) {
-      value = Math.floor(Math.random() * (max + 1 - min)) + min;
-      document.querySelector('.market .value').innerHTML = `
-              Current Price: <span>${value}</span>
+    if(this.time % interval == 0){
+          value = Math.floor( Math.random() * (max + 1 - min) ) + min;
+          document.querySelector('.market .value').innerHTML = `
+              &#x1f34e; Value: <span>${value}</span>
           `;
+
+        }
     }
-  }
 
   reset() {
     this.stopTimer();
@@ -168,7 +183,8 @@ const startGame = () => {
                 <div class="market">
                     <button class="sell">Sell</button>
                     <button class="buy">Buy</button>
-                    <div class="value btn">Current Price: <span>5</span></div>
+                    <div class="value btn">&#x1f34e;
+ Value : <span>5</span></div>
                 </div>
                 <div class="player-stats">
                     <div class="coins btn">&#x1fa99;
@@ -186,6 +202,8 @@ const startGame = () => {
   document.querySelector('.reset').addEventListener('click', resetGame);
 
   market.startCounters();  // ゲーム開始
+  bgmOn.play();
+  bgmOn.loop = true;
 }
 
 getStarted.addEventListener('click', startGame);  //ボタンに関数割り当て
@@ -201,5 +219,8 @@ function ringoImage() {
 function removeImage() {
   document.querySelector('.img').innerHTML = `<img src = ""> `;
 }
-// クマ襲来音
+// 効果音
 const kumaOn = new Audio('./images/bull_monster.mp3');
+const bgmOn = new Audio('./images/mario_full.mp3');
+const winnerOn = new Audio('./images/won.mp3');
+const looserOn = new Audio('./images/lost.mp3');

@@ -1,5 +1,5 @@
 body {
-    background-image: url(./apple_background_image_2.png);
+    background-image: url(./images/background-image_2.png);
     font-family: "Verdana", sans-serif;
     background-position: center;
     background-attachment: fixed;
@@ -81,7 +81,6 @@ button {
   z-index: -2;
   height: 100%;
   width: 100%;
-  background: url(/Users/ssugaya/Desktop/seir-flex-hypatia/homework/Project_1/images/background-image_2.png) no-repeat;
   background-position:center;                     /* 画像の表示位置を指定 */
   background-size: contain;
 }
