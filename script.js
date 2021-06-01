@@ -87,7 +87,8 @@ class Player {
     this.stopTimer();
     this.coins = 100;
     this.apple = 0;
-    this.limit = 15;
+    this.limit = 10;
+    removeImage()
   }
 }
 
@@ -112,10 +113,10 @@ class Market {
         bgmOn.pause();
         if(player.coins >= 101){
           winnerOn.play();
-          document.querySelector('.img').innerHTML = `<img src = "./images/pose_win_girl.png" width="25%" height="25%">`;
+          document.querySelector('.img').innerHTML = `<img src = "./images/pose_win_girl.png">`;
         }else {
           looserOn.play();
-          document.querySelector('.img').innerHTML = `<img src = "./images/pose_lose_girl.png" width="25%" height="25%">`;
+          document.querySelector('.img').innerHTML = `<img src = "./images/pose_lose_girl.png">`;
         }
       }
     }, 1000);
