@@ -17,10 +17,10 @@ h2 {
 .modal {
     visibility: hidden;
     width:50vw;
-    max-width: 400px;
+    max-width: 500px;
     padding: 30px;
     position: fixed;
-    top: 75%;
+    top: 70%;
     transform: translateY(-50%);
     left:0;
     right: 0;
