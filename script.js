@@ -25,6 +25,7 @@ class Player {
       this.updateStatsOnDom();
       this.stopTimer();
       this.startCounters();
+      buyOn.play();
       ringoImage();
     }
   }
@@ -34,6 +35,7 @@ class Player {
     if (this.apple > 0 && market.getTime() > 0) {
       this.coins += value;
       this.apple -= 1;
+      sellOn.play();
       //appleを所持していない場合カウントは0
       if (this.apple <= 0) {
         this.limit = 0;
@@ -101,17 +103,7 @@ class Market {
   }
 
   // カウントダウン
-  // startCounters() {
-  //       this.timer = setInterval(() => {
-  //           this.updateStatsOnDom();
-  //           this.time--;
-  //           if(this.time < 0){
-  //             this.stopTimer();
-  //             alert('ゲームが終了しました');
-  //           }
-  //       }, 1000);
-  //   }
-    startCounters() {
+  startCounters() {
     this.timer = setInterval(() => {
       this.updateStatsOnDom();
       this.time--;
@@ -120,11 +112,10 @@ class Market {
         bgmOn.pause();
         if(player.coins >= 101){
           winnerOn.play();
-          alert('You Won!');
+          document.querySelector('.img').innerHTML = `<img src = "./images/pose_win_girl.png" width="25%" height="25%">`;
         }else {
           looserOn.play();
-          alert('You lost!');
-
+          document.querySelector('.img').innerHTML = `<img src = "./images/pose_lose_girl.png" width="25%" height="25%">`;
         }
       }
     }, 1000);
@@ -176,7 +167,7 @@ const startGame = () => {
   modal.classList.toggle('open');
   flexContainer.innerHTML = `<div class="controls">
                     <div class="game-time btn">
-                        Remaining: <span>${gameTime}</span>
+                        &#8987;: <span>${gameTime}</span>
                     </div>
                     <button class="reset">Reset</button>
                 </div>
@@ -224,3 +215,5 @@ const kumaOn = new Audio('./images/bull_monster.mp3');
 const bgmOn = new Audio('./images/mario_full.mp3');
 const winnerOn = new Audio('./images/won.mp3');
 const looserOn = new Audio('./images/lost.mp3');
+const buyOn = new Audio ('./images/sound_1.mp3');
+const sellOn = new Audio ('./images/sound_2.mp3');
