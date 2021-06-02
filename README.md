@@ -13,5 +13,5 @@
 
 ### You win
 Earning the coins more than the default value.
-### You looser
+### You loose
 Loosing the coins you have.
